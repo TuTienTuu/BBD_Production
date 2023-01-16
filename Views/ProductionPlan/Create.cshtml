@@ -1,0 +1,480 @@
+﻿@model ProductionPlan
+
+
+<div class="container-fluid shadow p-5">
+    <div class="row pb-2">
+        <h2>Tạo kế hoạch</h2>
+    </div>
+
+    <form method="post" style="max-height:650px; overflow-x:scroll;">
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="ProductionCode">Mã sản xuất</label>
+                <input type="text" class="form-control mb-3" asp-for="ProductionCode">
+                <span asp-validation-for="ProductionCode" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="ProductionType"></label>
+                <input type="text" class="form-control mb-3" asp-for="ProductionType">
+                <span asp-validation-for="ProductionType" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="CustomerCode"></label>
+                <input type="text" class="form-control mb-3" asp-for="CustomerCode">
+                <span asp-validation-for="CustomerCode" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="CustomerName"></label>
+                <input type="text" class="form-control mb-3" asp-for="CustomerName">
+                <span asp-validation-for="CustomerName" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="POCode"></label>
+                <input class="form-control" asp-for="POCode">
+                <span asp-validation-for="POCode" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="OrderBy"></label>
+                <input class="form-control" asp-for="OrderBy">
+                <span asp-validation-for="OrderBy" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="OrderDate"></label>
+                <input type="date" class="form-control mb-3" value="@DateTime.Now.ToString("yyyy-MM-dd")" asp-for="OrderDate">
+                <span asp-validation-for="OrderDate" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="DeliveryDate"></label>
+                <input type="date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" asp-for="DeliveryDate">
+                <span asp-validation-for="DeliveryDate" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="ProductType"></label>
+                <input class="form-control" asp-for="ProductType">
+                <span asp-validation-for="ProductType" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="ProductCode"></label>
+                <input type="text" class="form-control mb-3" asp-for="ProductCode">
+                <span asp-validation-for="ProductCode" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="KnifeCode"></label>
+                <input type="text" class="form-control" asp-for="KnifeCode">
+                <span asp-validation-for="KnifeCode" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="KnifeSpec"></label>
+                <input class="form-control" asp-for="KnifeSpec">
+                <span asp-validation-for="KnifeSpec" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="KnifeContent"></label>
+                <input type="text" class="form-control mb-3" asp-for="KnifeContent">
+                <span asp-validation-for="KnifeContent" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="ProductName"></label>
+                <input type="text" class="form-control" asp-for="ProductName">
+                <span asp-validation-for="ProductName" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="ProductContent"></label>
+                <input class="form-control" asp-for="ProductContent">
+                <span asp-validation-for="ProductContent" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Border"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="Border">
+                <span asp-validation-for="Border" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="LaminatingFilm"></label>
+                <input type="text" class="form-control" asp-for="LaminatingFilm">
+                <span asp-validation-for="LaminatingFilm" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="LaminatingSize"></label>
+                <input type="number" class="form-control" value="0" asp-for="LaminatingSize">
+                <span asp-validation-for="LaminatingSize" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="PaperCode"></label>
+                <input type="text" class="form-control mb-3" asp-for="PaperCode">
+                <span asp-validation-for="PaperCode" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="PaperSupply"></label>
+                <input type="text" class="form-control" asp-for="PaperSupply">
+                <span asp-validation-for="PaperSupply" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="PaperSize"></label>
+                <input type="number" class="form-control" value="0" asp-for="PaperSize">
+                <span asp-validation-for="PaperSize" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="MetterPerRoll"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="MetterPerRoll">
+                <span asp-validation-for="MetterPerRoll" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="StampPerRoll"></label>
+                <input type="number" class="form-control" value="0" asp-for="StampPerRoll">
+                <span asp-validation-for="StampPerRoll" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Unit"></label>
+                <input type="text" class="form-control" asp-for="Unit">
+                <span asp-validation-for="Unit" class=" alert-danger"></span>
+            </div>
+        </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Quantity"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="Quantity">
+                <span asp-validation-for="Quantity" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="MetterPerOrder"></label>
+                <input type="number" class="form-control" value="0" asp-for="MetterPerOrder">
+                <span asp-validation-for="MetterPerOrder" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="TotalQuantity"></label>
+                <input type="number" class="form-control" value="0" asp-for="TotalQuantity">
+                <span asp-validation-for="TotalQuantity" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="TotalMetter"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="TotalMetter">
+                <span asp-validation-for="TotalMetter" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="ProductedMetter"></label>
+                <input type="number" class="form-control" value="0" asp-for="ProductedMetter">
+                <span asp-validation-for="ProductedMetter" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="CorePerSheet"></label>
+                <input type="number" class="form-control" value="0" asp-for="CorePerSheet">
+                <span asp-validation-for="CorePerSheet" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Note"></label>
+                <input type="text" class="form-control mb-3" asp-for="Note">
+                <span asp-validation-for="Note" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="DecalMaster"></label>
+                <input type="text" class="form-control" asp-for="DecalMaster">
+                <span asp-validation-for="DecalMaster" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="LayoutMainCode"></label>
+                <input type="number" class="form-control" value="0" asp-for="LayoutMainCode">
+                <span asp-validation-for="LayoutMainCode" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="LayoutCode"></label>
+                <input type="text" class="form-control mb-3" asp-for="LayoutCode">
+                <span asp-validation-for="LayoutCode" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="FilmCode"></label>
+                <input type="text" class="form-control" asp-for="FilmCode">
+                <span asp-validation-for="FilmCode" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="TotalProduct"></label>
+                <input type="number" class="form-control" value="0" asp-for="TotalProduct">
+                <span asp-validation-for="TotalProduct" class=" alert-danger"></span>
+            </div>
+        </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="ProductNumber"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="ProductNumber">
+                <span asp-validation-for="ProductNumber" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="ColorNumber"></label>
+                <input type="number" class="form-control" value="0" asp-for="ColorNumber">
+                <span asp-validation-for="ColorNumber" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="NumberTiningColor"></label>
+                <input type="number" class="form-control" value="0" asp-for="NumberTiningColor">
+                <span asp-validation-for="NumberTiningColor" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="NumberStackColor"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="NumberStackColor">
+                <span asp-validation-for="NumberStackColor" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="NumberRootColor"></label>
+                <input type="number" class="form-control" value="0" asp-for="NumberRootColor">
+                <span asp-validation-for="NumberRootColor" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="NumberOfStage"></label>
+                <input type="number" class="form-control" value="0" asp-for="NumberOfStage">
+                <span asp-validation-for="NumberOfStage" class=" alert-danger"></span>
+            </div>
+        </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Stage_1"></label>
+                <input type="text" class="form-control mb-3" asp-for="Stage_1">
+                <span asp-validation-for="Stage_1" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Stage_1_Loss"></label>
+                <input type="number" class="form-control" value="0" asp-for="Stage_1_Loss">
+                <span asp-validation-for="Stage_1_Loss" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Stage_2"></label>
+                <input type="text" class="form-control" asp-for="Stage_2">
+                <span asp-validation-for="Stage_2" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Stage_2_Loss"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="Stage_2_Loss">
+                <span asp-validation-for="Stage_2_Loss" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Stage_3"></label>
+                <input type="text" class="form-control" asp-for="Stage_3">
+                <span asp-validation-for="Stage_3" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Stage_3_Loss"></label>
+                <input type="number" class="form-control" value="0" asp-for="Stage_3_Loss">
+                <span asp-validation-for="Stage_3_Loss" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Stage_4"></label>
+                <input type="text" class="form-control mb-3" asp-for="Stage_4">
+                <span asp-validation-for="Stage_4" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Stage_4_Loss"></label>
+                <input type="number" class="form-control" value="0" asp-for="Stage_4_Loss">
+                <span asp-validation-for="Stage_4_Loss" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Stage_5"></label>
+                <input type="text" class="form-control" asp-for="Stage_5">
+                <span asp-validation-for="Stage_5" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Stage_5_Loss"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="Stage_5_Loss">
+                <span asp-validation-for="Stage_5_Loss" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="PrintSurfaceLoss"></label>
+                <input type="number" class="form-control" value="0" asp-for="PrintSurfaceLoss">
+                <span asp-validation-for="PrintSurfaceLoss" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="PrintSoleLoss"></label>
+                <input type="number" class="form-control" value="0" asp-for="PrintSoleLoss">
+                <span asp-validation-for="PrintSoleLoss" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="ChangeProductLoss"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="ChangeProductLoss">
+                <span asp-validation-for="ChangeProductLoss" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="ChangeLaminationLoss"></label>
+                <input type="number" class="form-control" value="0" asp-for="ChangeLaminationLoss">
+                <span asp-validation-for="ChangeLaminationLoss" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="LossPercent"></label>
+                <input type="number" class="form-control" value="0" asp-for="LossPercent">
+                <span asp-validation-for="LossPercent" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="LossTotal"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="LossTotal">
+                <span asp-validation-for="LossTotal" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="SplitLine"></label>
+                <input type="number" class="form-control" value="0" asp-for="SplitLine">
+                <span asp-validation-for="SplitLine" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="KnifeStep"></label>
+                <input type="number" class="form-control" value="0" asp-for="KnifeStep">
+                <span asp-validation-for="KnifeStep" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="StampPerStep"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="StampPerStep">
+                <span asp-validation-for="StampPerStep" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="With"></label>
+                <input type="number" class="form-control" value="0" asp-for="With">
+                <span asp-validation-for="With" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="NumStampHorizontail"></label>
+                <input type="number" class="form-control" value="0" asp-for="NumStampHorizontail">
+                <span asp-validation-for="NumStampHorizontail" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="PrintStep"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="PrintStep">
+                <span asp-validation-for="PrintStep" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Core"></label>
+                <input type="number" class="form-control" value="0" asp-for="Core">
+                <span asp-validation-for="Core" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="CoreSpec"></label>
+                <input type="number" class="form-control" value="0" asp-for="CoreSpec">
+                <span asp-validation-for="CoreSpec" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="LayoutName"></label>
+                <input type="text" class="form-control mb-3" asp-for="LayoutName">
+                <span asp-validation-for="LayoutName" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="LayoutPosition"></label>
+                <input type="text" class="form-control" asp-for="LayoutPosition">
+                <span asp-validation-for="LayoutPosition" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Time_1"></label>
+                <input type="number" class="form-control" value="0" asp-for="Time_1">
+                <span asp-validation-for="Time_1" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Time_2"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="Time_2">
+                <span asp-validation-for="Time_2" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Time_3"></label>
+                <input type="number" class="form-control" value="0" asp-for="Time_3">
+                <span asp-validation-for="Time_3" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Time_4"></label>
+                <input type="number" class="form-control" value="0" asp-for="Time_4">
+                <span asp-validation-for="Time_4" class=" alert-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Time_5"></label>
+                <input type="number" class="form-control mb-3" value="0" asp-for="Time_5">
+                <span asp-validation-for="Time_5" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label asp-for="Middle"></label>
+                <input type="number" class="form-control" value="0" asp-for="Middle">
+                <span asp-validation-for="Middle" class=" alert-danger"></span>
+            </div>
+             <div class="form-group col-md-4 mb-3">
+                <label asp-for="Machine"></label>
+                <input type="text" class="form-control" asp-for="Machine">
+                <span asp-validation-for="Machine" class=" alert-danger"></span>
+            </div>
+             <div class="form-group col-md-4 mb-3">
+                <label asp-for="Content"></label>
+                <input type="text" class="form-control" asp-for="Content">
+                <span asp-validation-for="Content" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Lưu</button>
+        <a asp-controller="ProductionPlan" asp-action="Index" class="btn btn-lg btn-warning p-2">Trở lại</a>
+    </form>
+
+</div>
+
+
+@*//for front end validations*@
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -1,0 +1,189 @@
+﻿@model IEnumerable<ProductionPlan>
+
+@*@{
+    ViewData["Title"] = "Index";
+    }*@
+
+
+<div class="row">
+    <div class="col-8">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="col-4 d-flex justify-content-center">
+        @if (TempData["ResultOk"] != null)
+        {
+            <h4 aria-hidden="true" id="alertMesss" class="alert-success">@TempData["ResultOk"]</h4>
+        }
+        else
+        {
+            <h4 type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="alert-success">&times;</span>
+            </h4>
+        }
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" col-sm-4 col-md-4 col-lg-4 col-xl-4 mb-3">
+                <input type="file" name="file" class="form-control" id="importFile" />
+            </div>
+            <div class=" col-sm-2 col-md-2 col-lg-2 col-xl-2 mb-3">
+                <input type="submit" value="Import" asp-controller="ProductionPlan" asp-action="Create" class="btn btn-primary mr-1" />
+                <a asp-controller="ProductionPlan" asp-action="Create" class="btn btn-primary"><i class="bi bi-file-plus-fill"></i>Tạo mới</a>
+            </div>
+
+            <form method="get" enctype="multipart/form-data" class=" col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <div class="row">
+                    <div class="class=" col-sm-3 col-md-3 col-lg-3 col-xl-3 float-right"">
+                        <input type="date" class="form-control bg-light border-0 small" name="date" id="date" aria-describedby="basic-addon2" />
+                    </div>
+                    <button class="btn btn-primary" type="submit" id="btnSearch">
+                        Tìm kiếm
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <table class="table table-bordered table-responsive table-hover" style="overflow-x:scroll;" id="table_id">
+        <thead>
+            <tr>
+                <th scope="col">Mã lệnh sản xuất</th>
+                <th scope="col">Máy chạy</th>
+                <th scope="col">Kháchhàng</th>
+                <th scope="col">PO</th>
+                <th scope="col">Ngàyđặthàng</th>
+                <th scope="col">Ngàygiaohàng</th>
+                <th scope="col">Loạihàng</th>
+                <th scope="col">Quycáchdao</th>
+                <th scope="col">Nộidung</th>
+                <th scope="col">Số công đoạn</th>
+                <th scope="col">Số mã</th>
+                <th scope="col">Màng cán</th>
+                <th scope="col">Khổ màng</th>
+                <th scope="col">Mãgiấy</th>
+                <th scope="col">Khổ giấy</th>
+                <th scope="col">M/Cuộn</th>
+                <th scope="col">Tem/Cuộn</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">ĐVT</th>
+                <th scope="col">Lõi/Tờ</th>
+                <th scope="col">M/Đơn</th>
+                <th scope="col">M SX</th>
+                <th scope="col">Mã layout</th>
+                <th scope="col">Ghi chú</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody style="font-size:12px;">
+            @if (Model.Count() > 0 || Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.ProductionCode
+                        </td>
+                        <td>
+                            @item.Machine
+                        </td>
+                        <td>
+                            @item.CustomerName
+                        </td>
+                        <td>
+                            @item.POCode
+                        </td>
+                        <td>
+                            @item.OrderDate.ToString("yyyy-MM-dd")
+                        </td>
+                        <td>
+                            @item.DeliveryDate.ToString("yyyy-MM-dd")
+                        </td>
+                        <td>
+                            @item.ProductionType
+                        </td>
+                        <td>
+                            @item.KnifeSpec
+                        </td>
+                        <td>
+                            @item.Content
+                        </td>
+                        <td>
+                            @item.NumberOfStage
+                        </td>
+                        <td>
+                            @item.ProductNumber
+                        </td>
+                        <td>
+                            @item.LaminatingFilm
+                        </td>
+                        <td>
+                            @item.LaminatingSize
+                        </td>
+                        <td>
+                            @item.PaperCode
+                        </td>
+                        <td>
+                            @item.PaperSize
+                        </td>
+                        <td>
+                            @item.MetterPerRoll
+                        </td>
+                        <td>
+                            @item.StampPerRoll
+                        </td>
+                        <td>
+                            @item.Quantity
+                        </td>
+                        <td>
+                            @item.Unit
+                        </td>
+                        <td>
+                            @item.CorePerSheet
+                        </td>
+                        <td>
+                            @item.MetterPerOrder
+                        </td>
+                        <td>
+                            @item.ProductedMetter
+                        </td>
+                        <td>
+                            @item.LayoutCode
+                        </td>
+                        <td>
+                            @item.Note
+                        </td>
+                        <td>
+                            <div role="group" class="w-60 btn-group">
+                                <a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.ProductionPlanId" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                                <a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.ProductionPlanId" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    Không có dữ liệu
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section CSS{
+<link href="~/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+}
+@section Scripts{
+<script src="~/vendor/datatables/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#table_id').DataTable();
+     $("#alertMesss").fadeTo(2000, 500).slideUp(500, function() {
+      $("#alertMesss").slideUp(500);
+    });
+    });
+
+</script>
+}
