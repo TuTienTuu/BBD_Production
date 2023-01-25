@@ -22,6 +22,163 @@ namespace BBD_Production_New.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("BBD_Production_New.Models.ImportHistory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<DateTime>("ImportDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImportFileName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ImportHistorys");
+                });
+
+            modelBuilder.Entity("BBD_Production_New.Models.ProductionOrder", b =>
+                {
+                    b.Property<Guid>("ProductionOrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("CorePerSheet")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasMaxLength(150)
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomerCode")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<DateTime>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeliveryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("KnifeSpec")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("LaminatingFilm")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("LaminatingSize")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LayoutCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Machine")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<int>("MetterPerOrder")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MetterPerRoll")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("NumberOfCode")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfStage")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("POCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PaperCode")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("PaperSize")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductType")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("ProductedMetter")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductionCode")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid>("ProductionPlanId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StampPerRoll")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Unit")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("ProductionOrderId");
+
+                    b.ToTable("ProductionOrders");
+                });
+
             modelBuilder.Entity("BBD_Production_New.Models.ProductionPlan", b =>
                 {
                     b.Property<Guid>("ProductionPlanId")
@@ -101,8 +258,8 @@ namespace BBD_Production_New.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<int>("KnifeStep")
-                        .HasColumnType("int");
+                    b.Property<float>("KnifeStep")
+                        .HasColumnType("real");
 
                     b.Property<string>("LaminatingFilm")
                         .IsRequired()
@@ -130,11 +287,11 @@ namespace BBD_Production_New.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("LossPercent")
-                        .HasColumnType("int");
+                    b.Property<float>("LossPercent")
+                        .HasColumnType("real");
 
-                    b.Property<int>("LossTotal")
-                        .HasColumnType("int");
+                    b.Property<float>("LossTotal")
+                        .HasColumnType("real");
 
                     b.Property<string>("Machine")
                         .IsRequired()
@@ -205,8 +362,8 @@ namespace BBD_Production_New.Migrations
                     b.Property<float>("PrintSoleLoss")
                         .HasColumnType("real");
 
-                    b.Property<int>("PrintStep")
-                        .HasColumnType("int");
+                    b.Property<float>("PrintStep")
+                        .HasColumnType("real");
 
                     b.Property<float>("PrintSurfaceLoss")
                         .HasColumnType("real");
@@ -247,8 +404,8 @@ namespace BBD_Production_New.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<float>("Quantity")
+                        .HasColumnType("real");
 
                     b.Property<int>("SplitLine")
                         .HasColumnType("int");
@@ -323,8 +480,8 @@ namespace BBD_Production_New.Migrations
                     b.Property<int>("TotalProduct")
                         .HasColumnType("int");
 
-                    b.Property<int>("TotalQuantity")
-                        .HasColumnType("int");
+                    b.Property<float>("TotalQuantity")
+                        .HasColumnType("real");
 
                     b.Property<string>("Unit")
                         .IsRequired()
