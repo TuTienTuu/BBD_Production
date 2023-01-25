@@ -49,12 +49,12 @@ namespace BBD_Production_New.Models
         public string PaperCode { get; set; }
         [Display(Name = "Khổ giấy")]
         public int PaperSize { get; set; }
-        [Display(Name = "M/Cuộn")]
+        [Display(Name = "M / Cuộn")]
         public int MetterPerRoll { get; set; }
-        [Display(Name = "Tem/Cuộn")]
+        [Display(Name = "Tem / Cuộn")]
         public int StampPerRoll { get; set; }
         [Display(Name = "Số lượng")]
-        public int Quantity { get; set; }
+        public float Quantity { get; set; }
         [MaxLength(50, ErrorMessage = "Đơn vị không được vượt quá 50 ký tự")]
         [Display(Name = "Đơn vị")]
         public string Unit { get; set; }
@@ -94,7 +94,7 @@ namespace BBD_Production_New.Models
         [Display(Name = "Nhà cung cấp")]
         public string PaperSupply { get; set; }
         [Display(Name = "Tổng số lượng")]
-        public int TotalQuantity { get; set; }
+        public float TotalQuantity { get; set; }
         [Display(Name = "Tổng số mét")]
         public int TotalMetter { get; set; }
         [Display(Name = "Mã layout chính")]
@@ -151,13 +151,13 @@ namespace BBD_Production_New.Models
         [Display(Name = "H.H thay màng")]
         public int ChangeLaminationLoss { get; set; }
         [Display(Name = "% rủi ro")]
-        public int LossPercent { get; set; }
+        public float LossPercent { get; set; }
         [Display(Name = "Tổng hao hụt")]
-        public int LossTotal { get; set; }
+        public float LossTotal { get; set; }
         [Display(Name = "Xẻ line")]
         public int SplitLine { get; set; }
         [Display(Name = "Bước dao")]
-        public int KnifeStep { get; set; }
+        public float KnifeStep { get; set; }
         [Display(Name = "Tem/Nhịp")]
         public int StampPerStep { get; set; }
         [Display(Name = "KT ngang")]
@@ -165,7 +165,7 @@ namespace BBD_Production_New.Models
         [Display(Name = "Số tem ngang")]
         public int NumStampHorizontail { get; set; }
         [Display(Name = "Bước in")]
-        public int PrintStep { get; set; }
+        public float PrintStep { get; set; }
         [Display(Name = "Cây lõi")]
         public float Core { get; set; }
         [Display(Name = "QC lõi")]
