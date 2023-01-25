@@ -11,5 +11,7 @@ namespace BBD_Production_New.Data
         }
 
         public DbSet<ProductionPlan> ProductionPlans { get; set; }
+        public DbSet<ProductionOrder> ProductionOrders { get; set; }
+        public DbSet<ImportHistory> ImportHistorys { get; set; }
     }
 }
